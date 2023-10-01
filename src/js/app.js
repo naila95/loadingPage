@@ -9,16 +9,15 @@ function Loading() {
 }
 
 let input = document.querySelector(".inp");
-let inputValue = input.value;
-console.log(inputValue);
 
-input.addEventListener("keyup", function (event) {
+input.addEventListener("keydown", function (event) {
+  let inputValue = input.value;
   if (event.keyCode === 32) {
-    console.log("space basildi");
-    inputValue.slice(0, -1);
+    event.preventDefault();
+    input.value = inputValue.slice(0, input.value.length - 1);
   }
   if (event.keyCode === 8) {
-    console.log("backspace basildi");
-    inputValue + " ";
+    input.value += " ";
+    event.preventDefault();
   }
 });
